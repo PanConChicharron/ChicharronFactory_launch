@@ -67,7 +67,7 @@
       min_optimization_length: 0.0
 
       # Seed u_nom from acados temporal MPT (self warm-start; ignores last MPPI u_opt).
-      use_temporal_mpt_as_nominal: true
+      use_temporal_mpt_as_nominal: false
       use_last_control_as_nominal: true
 
       # Optional offline debug log output.
