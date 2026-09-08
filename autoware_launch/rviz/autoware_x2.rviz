@@ -3,13 +3,16 @@ Panels:
     Help Height: 0
     Name: Displays
     Property Tree Widget:
-      Expanded: ~
+      Expanded:
+        - /Planning1
+        - /Planning1/ScenarioPlanning1
       Splitter Ratio: 0.557669460773468
-    Tree Height: 454
+    Tree Height: 768
   - Class: rviz_common/Selection
     Name: Selection
   - Class: rviz_common/Tool Properties
-    Expanded: ~
+    Expanded:
+      - /2D Dummy Car1
     Name: Tool Properties
     Splitter Ratio: 0.5886790156364441
   - Class: rviz_common/Views
@@ -25,6 +28,8 @@ Panels:
     Name: ControlModeDisplay
   - Class: rviz_plugins/ActiveGeneratorPanel
     Name: ActiveGeneratorPanel
+  - Class: autoware::route_history::RouteHistoryPanel
+    Name: RouteHistoryPanel
 Visualization Manager:
   Class: ""
   Displays:
@@ -420,14 +425,17 @@ Visualization Manager:
           Name: Lanelet2VectorMap
           Namespaces:
             "": true
-            bus_stop_area: true
+            bicycle_lane_center_lane_line: true
+            bicycle_lane_center_line_arrows: true
+            bicycle_lane_lane_start_bound: true
+            bicycle_lane_lanelets: true
+            bicycle_lane_left_lane_bound: true
+            bicycle_lane_right_lane_bound: true
             center_lane_line: false
             center_line_arrows: false
             crosswalk_areas: false
             crosswalk_lanelet_id: true
             crosswalk_lanelets: true
-            detection_area: true
-            detection_area_stopline: true
             hatched_road_markings_area: false
             hatched_road_markings_bound: true
             intersection_area: false
@@ -435,13 +443,20 @@ Visualization Manager:
             lanelet direction: true
             lanelet_id: false
             left_lane_bound: true
-            no_obstacle_segmentation_area: true
+            no_parking_area: true
+            no_stopping_area: true
+            no_stopping_area_stopline: true
+            obstacle_removal_area: true
+            parking_lots: true
             partitions: true
+            pedestrian_polygon_marking: true
             right_lane_bound: true
+            road_borders: true
             road_lanelets: false
             shoulder_center_lane_line: false
             shoulder_center_line_arrows: true
             shoulder_lane_start_bound: true
+            shoulder_lanelet direction: true
             shoulder_left_lane_bound: true
             shoulder_right_lane_bound: true
             shoulder_road_lanelets: false
@@ -451,7 +466,6 @@ Visualization Manager:
             traffic_light_reg_elem_id: false
             traffic_light_triangle: true
             walkway_lanelets: true
-            waypoints: true
           Topic:
             Depth: 5
             Durability Policy: Transient Local
@@ -893,7 +907,7 @@ Visualization Manager:
               Use Fixed Frame: true
               Use rainbow: true
               Value: false
-            - Alpha: 0.999
+            - Alpha: 0.9990000128746033
               Autocompute Intensity Bounds: false
               Autocompute Value Bounds:
                 Max Value: 15
@@ -915,17 +929,18 @@ Visualization Manager:
               Position Transformer: XYZ
               Selectable: false
               Size (Pixels): 1.5
-              Size (m): 0.02
+              Size (m): 0.019999999552965164
               Style: Points
               Topic:
                 Depth: 5
                 Durability Policy: Volatile
+                Filter size: 10
                 History Policy: Keep Last
                 Reliability Policy: Best Effort
                 Value: /perception/segmented/pointcloud
               Use Fixed Frame: true
               Use rainbow: true
-              Value: true
+              Value: false
           Enabled: true
           Name: Segmentation
         - Class: rviz_common/Group
@@ -952,6 +967,16 @@ Visualization Manager:
                     Path Resolution: Normal
                     Predicted Path: true
                   Per Class Color:
+                    ANIMAL: 255; 105; 180
+                    BUS: 30; 144; 255
+                    CAR: 30; 144; 255
+                    CYCLIST: 119; 11; 32
+                    HAZARD: 255; 69; 0
+                    MOTORCYCLE: 119; 11; 32
+                    PEDESTRIAN: 255; 192; 203
+                    TRAILER: 30; 144; 255
+                    TRUCK: 30; 144; 255
+                    UNKNOWN: 255; 255; 255
                     Value: false
                   Shape:
                     BBox Footprint: false
@@ -971,7 +996,7 @@ Visualization Manager:
                     History Policy: Keep Last
                     Reliability Policy: Best Effort
                     Value: /perception/object_recognition/detection/centerpoint/objects
-                  Value: true
+                  Value: false
                   Vector:
                     Twist: true
                     Yaw Rate: false
@@ -995,6 +1020,16 @@ Visualization Manager:
                     Path Resolution: Normal
                     Predicted Path: true
                   Per Class Color:
+                    ANIMAL: 255; 105; 180
+                    BUS: 30; 144; 255
+                    CAR: 30; 144; 255
+                    CYCLIST: 119; 11; 32
+                    HAZARD: 255; 69; 0
+                    MOTORCYCLE: 119; 11; 32
+                    PEDESTRIAN: 255; 192; 203
+                    TRAILER: 30; 144; 255
+                    TRUCK: 30; 144; 255
+                    UNKNOWN: 255; 255; 255
                     Value: false
                   Shape:
                     BBox Footprint: false
@@ -1014,7 +1049,7 @@ Visualization Manager:
                     History Policy: Keep Last
                     Reliability Policy: Best Effort
                     Value: /perception/object_recognition/detection/camera_only/objects
-                  Value: true
+                  Value: false
                   Vector:
                     Twist: true
                     Yaw Rate: false
@@ -1038,6 +1073,16 @@ Visualization Manager:
                     Path Resolution: Normal
                     Predicted Path: true
                   Per Class Color:
+                    ANIMAL: 255; 105; 180
+                    BUS: 30; 144; 255
+                    CAR: 30; 144; 255
+                    CYCLIST: 119; 11; 32
+                    HAZARD: 255; 69; 0
+                    MOTORCYCLE: 119; 11; 32
+                    PEDESTRIAN: 255; 192; 203
+                    TRAILER: 30; 144; 255
+                    TRUCK: 30; 144; 255
+                    UNKNOWN: 255; 255; 255
                     Value: false
                   Shape:
                     BBox Footprint: false
@@ -1057,7 +1102,7 @@ Visualization Manager:
                     History Policy: Keep Last
                     Reliability Policy: Best Effort
                     Value: /perception/object_recognition/detection/clustering/label_based_euclidean_cluster/objects
-                  Value: true
+                  Value: false
                   Vector:
                     Twist: true
                     Yaw Rate: false
@@ -1081,6 +1126,16 @@ Visualization Manager:
                     Path Resolution: Normal
                     Predicted Path: true
                   Per Class Color:
+                    ANIMAL: 255; 105; 180
+                    BUS: 30; 144; 255
+                    CAR: 30; 144; 255
+                    CYCLIST: 119; 11; 32
+                    HAZARD: 255; 69; 0
+                    MOTORCYCLE: 119; 11; 32
+                    PEDESTRIAN: 255; 192; 203
+                    TRAILER: 30; 144; 255
+                    TRUCK: 30; 144; 255
+                    UNKNOWN: 255; 255; 255
                     Value: false
                   Shape:
                     BBox Footprint: false
@@ -1100,7 +1155,7 @@ Visualization Manager:
                     History Policy: Keep Last
                     Reliability Policy: Best Effort
                     Value: /perception/object_recognition/detection/irregular_object/objects
-                  Value: true
+                  Value: false
                   Vector:
                     Twist: true
                     Yaw Rate: false
@@ -1124,6 +1179,16 @@ Visualization Manager:
                     Path Resolution: Normal
                     Predicted Path: true
                   Per Class Color:
+                    ANIMAL: 255; 105; 180
+                    BUS: 30; 144; 255
+                    CAR: 30; 144; 255
+                    CYCLIST: 119; 11; 32
+                    HAZARD: 255; 69; 0
+                    MOTORCYCLE: 119; 11; 32
+                    PEDESTRIAN: 255; 192; 203
+                    TRAILER: 30; 144; 255
+                    TRUCK: 30; 144; 255
+                    UNKNOWN: 255; 255; 255
                     Value: false
                   Shape:
                     BBox Footprint: false
@@ -1143,7 +1208,7 @@ Visualization Manager:
                     History Policy: Keep Last
                     Reliability Policy: Best Effort
                     Value: /perception/obstacle_segmentation/ptv3/objects
-                  Value: true
+                  Value: false
                   Vector:
                     Twist: true
                     Yaw Rate: false
@@ -1167,6 +1232,16 @@ Visualization Manager:
                     Path Resolution: Normal
                     Predicted Path: true
                   Per Class Color:
+                    ANIMAL: 255; 105; 180
+                    BUS: 30; 144; 255
+                    CAR: 30; 144; 255
+                    CYCLIST: 119; 11; 32
+                    HAZARD: 255; 69; 0
+                    MOTORCYCLE: 119; 11; 32
+                    PEDESTRIAN: 255; 192; 203
+                    TRAILER: 30; 144; 255
+                    TRUCK: 30; 144; 255
+                    UNKNOWN: 255; 255; 255
                     Value: false
                   Shape:
                     BBox Footprint: false
@@ -1186,7 +1261,7 @@ Visualization Manager:
                     History Policy: Keep Last
                     Reliability Policy: Best Effort
                     Value: /perception/object_recognition/detection/bevfusion/objects
-                  Value: true
+                  Value: false
                   Vector:
                     Twist: true
                     Yaw Rate: false
@@ -1261,19 +1336,12 @@ Visualization Manager:
                     Twist: false
                     Yaw: false
                     Yaw Rate: false
+                  Display Offset: 0
                   Enabled: false
                   Line Width: 0.15000000596046448
                   Name: PredictedObjects
                   Namespaces:
-                    acceleration: true
-                    label: true
-                    path: true
-                    path confidence: true
-                    position covariance: true
-                    shape: true
-                    twist: true
-                    uuid: true
-                    velocity: true
+                    {}
                   Path:
                     Path Confidence: true
                     Path Footprint: false
@@ -1309,7 +1377,7 @@ Visualization Manager:
                     History Policy: Keep Last
                     Reliability Policy: Best Effort
                     Value: /perception/object_recognition/objects
-                  Value: true
+                  Value: false
                   Vector:
                     Twist: true
                     Yaw Rate: false
@@ -1510,11 +1578,12 @@ Visualization Manager:
               Enabled: true
               Name: RouteArea
               Namespaces:
+                end_lanelets: true
+                goal_lanelets: false
+                lane_start_bound: true
                 left_lane_bound: true
                 right_lane_bound: true
-                lane_start_bound: true
                 route_lanelets: true
-                goal_lanelets: false
               Topic:
                 Depth: 5
                 Durability Policy: Transient Local
@@ -1560,7 +1629,7 @@ Visualization Manager:
           Displays:
             - Class: rviz_plugins/Trajectory
               Color Border Vel Max: 3
-              Enabled: true
+              Enabled: false
               Name: ScenarioTrajectory
               Topic:
                 Depth: 5
@@ -1569,15 +1638,15 @@ Visualization Manager:
                 History Policy: Keep Last
                 Reliability Policy: Reliable
                 Value: /planning/trajectory
-              Value: true
+              Value: false
               View Footprint:
                 Alpha: 1
                 Color: 230; 230; 50
                 Offset from BaseLink: 0
-                Rear Overhang: 1.0299999713897705
+                Rear Overhang: 1.5257899761199951
                 Value: false
-                Vehicle Length: 4.769999980926514
-                Vehicle Width: 1.8300000429153442
+                Vehicle Length: 7.2368998527526855
+                Vehicle Width: 2.4274098873138428
               View Path:
                 Alpha: 0.9990000128746033
                 Constant Width: false
@@ -3157,7 +3226,10 @@ Visualization Manager:
               Enabled: true
               Name: DiffusionPlannerRouteMarker
               Namespaces:
-                {}
+                lane: true
+                lane_lb: true
+                lane_rb: true
+                sphere: true
               Topic:
                 Depth: 5
                 Durability Policy: Volatile
@@ -3169,7 +3241,7 @@ Visualization Manager:
               Enabled: true
               Name: DiffusionPlannerRoadBoarderMarker
               Namespaces:
-                {}
+                road_border: true
               Topic:
                 Depth: 5
                 Durability Policy: Volatile
@@ -3186,19 +3258,12 @@ Visualization Manager:
                 Twist: false
                 Yaw: false
                 Yaw Rate: false
+              Display Offset: 0
               Enabled: true
               Line Width: 0.15000000596046448
               Name: PredictedObjects
               Namespaces:
-                acceleration: true
-                label: true
-                path: true
-                path confidence: true
-                position covariance: true
-                shape: true
-                twist: true
-                uuid: true
-                velocity: true
+                {}
               Path:
                 Path Confidence: false
                 Path Footprint: false
@@ -3702,19 +3767,85 @@ Visualization Manager:
                 Debug:
                   Control: true
                   Localization:
-                    EKFPoseHistory: true
-                    NDT pointclouds: true
-                    NDTLoadedPCDMap: true
-                    NDTPoseHistory: true
+                    "": true
                     Value: true
                   Map: true
                   Perception:
                     "": true
                     Value: true
                   Planning:
-                    "":
-                      "":
-                        "": true
+                    Debug:
+                      BehaviorPathPlanner:
+                        Arrow: true
+                        GoalPlanner: true
+                        LaneFollowing: true
+                        LeftLaneChange: true
+                        RightLaneChange: true
+                        SideShift: true
+                        StartPlanner: true
+                        StaticObstacleAvoidance: true
+                        Value: true
+                      MotionVelocityPlanner:
+                        DynamicObstacleStop: true
+                        ObstacleCruise: true
+                        ObstacleSlowDown: true
+                        ObstacleStop: true
+                        ObstacleVelocityLimiter: true
+                        OutOfLane: true
+                        RunOut: true
+                        Value: true
+                      Value: true
+                    Info:
+                      BehaviorPathPlanner:
+                        Info (AvoidanceByLC): true
+                        Info (DynamicObstacleAvoidance): true
+                        Info (ExtLaneChangeLeft): true
+                        Info (ExtLaneChangeRight): true
+                        Info (GoalPlanner): true
+                        Info (LaneChangeLeft): true
+                        Info (LaneChangeRight): true
+                        Info (StartPlanner): true
+                        Info (StaticObstacleAvoidance): true
+                        Value: true
+                      BehaviorVelocityPlanner:
+                        Blind Spot: true
+                        Crosswalk: true
+                        DetectionArea: true
+                        DynamicObstacleAvoidance: true
+                        Intersection: true
+                        NoDrivableLane: true
+                        NoStoppingArea: true
+                        OcclusionSpot: true
+                        SpeedBump: true
+                        StopLine: true
+                        TrafficLight: true
+                        Value: true
+                        VirtualTrafficLight: true
+                      MotionVelocityPlanner: true
+                      Objects Of Interest:
+                        AvoidanceByLCLeft: true
+                        AvoidanceByLCRight: true
+                        AvoidanceLeft: true
+                        AvoidanceRight: true
+                        BlindSpot: true
+                        Crosswalk: true
+                        DetectionArea: true
+                        GoalPlanner: true
+                        Intersection: true
+                        LaneChangeLeft: true
+                        LaneChangeRight: true
+                        NoStoppingArea: true
+                        ObstacleCruise: true
+                        RunOut: true
+                        StartPlanner: true
+                        TrafficLight: true
+                        Value: true
+                      ObstacleAvoidance: true
+                      SurroundObstacleChecker:
+                        Footprint: true
+                        FootprintOffset: true
+                        FootprintRecoverOffset: true
+                        SurroundObstacleCheck: true
                         Value: true
                       Value: true
                     Value: true
@@ -3747,12 +3878,19 @@ Visualization Manager:
                   Lanelet2VectorMap: true
                   PointCloudMap: true
                   Value: false
+                MarkerArray: true
                 Perception:
                   ObjectRecognition:
                     Detection:
-                      DetectedObjects: true
+                      BEV Fusion(cyan): true
+                      Centerpoint(red): true
+                      Irregular object(pink): true
+                      PTv3 Cluster(light_green): true
+                      PTv3 Object(magenta): true
+                      Stream PETR(yellow): true
                       Value: true
                     MapFilteredPointCloud: true
+                    MapFilteredPointCloud-PTV3: true
                     Prediction:
                       Maneuver: true
                       PredictedObjects: true
@@ -3766,6 +3904,7 @@ Visualization Manager:
                     Value: true
                   Segmentation:
                     NoGroundPointCloud: true
+                    SegmentedPointCloud: true
                     Value: true
                   TrafficLight:
                     MapBasedDetectionResult: true
@@ -3794,14 +3933,6 @@ Visualization Manager:
                     RouteArea: true
                     Value: true
                   NeuralNetworkBasedPlanner:
-                    PlanningFactors:
-                      PlanningFactor(CollisionCheckFilter): true
-                      PlanningFactor(DiffusionPlanner): true
-                      PlanningFactor(ModifierObstacleStop): true
-                      PlanningFactor(ModifierSurroundObstacleStop): true
-                      PlanningFactor(ModifierTrafficLightStop): true
-                      PlanningFactor(NeuralNetworkPlanner): true
-                      Value: true
                     DebugMarkers:
                       ModifierObstacleStopMarker: true
                       TrajectoryValidator(CollisionCheckFilter): true
@@ -3810,7 +3941,15 @@ Visualization Manager:
                       Value: true
                     DiffusionPlannerRoadBoarderMarker: true
                     DiffusionPlannerRouteMarker: true
-                    ModifierObstacleStopMarker: false
+                    PlanningFactors:
+                      PlanningFactor(CollisionCheckFilter): true
+                      PlanningFactor(DiffusionPlanner): true
+                      PlanningFactor(ModifierObstacleStop): true
+                      PlanningFactor(ModifierSurroundObstacleStop): true
+                      PlanningFactor(ModifierTrafficLightStop): true
+                      PlanningFactor(NeuralNetworkPlanner): true
+                      PlanningFactor(TrajectoryValidator): true
+                      Value: true
                     PredictedObjects: true
                     Value: true
                   ScenarioPlanning:
@@ -3867,12 +4006,12 @@ Visualization Manager:
                       MotionPlanning:
                         PlanningFactor:
                           PlanningFactor(DynamicObstacleStop): true
-                          PlanningFactor(RunOut): true
                           PlanningFactor(ObstacleCruise): true
                           PlanningFactor(ObstacleSlowDown): true
                           PlanningFactor(ObstacleStop): true
                           PlanningFactor(OutOfLane): true
                           PlanningFactor(RoadUserStop): true
+                          PlanningFactor(RunOut): true
                           PlanningFactor(SurroundObstacle): true
                           Value: true
                         Trajectory: true
@@ -3911,6 +4050,8 @@ Visualization Manager:
                     SignalDisplay: true
                     Value: true
                     VehicleModel: true
+                TrajectoryValidatorFilterReport: true
+                TrajectoryValidatorProcessingTimeReport: true
                 Value: true
               Zoom Factor: 1
             - Alpha: 1
@@ -3967,6 +4108,16 @@ Visualization Manager:
                 Path Resolution: Normal
                 Predicted Path: true
               Per Class Color:
+                ANIMAL: 255; 105; 180
+                BUS: 30; 144; 255
+                CAR: 30; 144; 255
+                CYCLIST: 119; 11; 32
+                HAZARD: 255; 69; 0
+                MOTORCYCLE: 119; 11; 32
+                PEDESTRIAN: 255; 192; 203
+                TRAILER: 30; 144; 255
+                TRUCK: 30; 144; 255
+                UNKNOWN: 255; 255; 255
                 Value: false
               Shape:
                 BBox Footprint: false
@@ -4120,6 +4271,16 @@ Visualization Manager:
                 Path Resolution: Normal
                 Predicted Path: true
               Per Class Color:
+                ANIMAL: 255; 105; 180
+                BUS: 30; 144; 255
+                CAR: 30; 144; 255
+                CYCLIST: 119; 11; 32
+                HAZARD: 255; 69; 0
+                MOTORCYCLE: 119; 11; 32
+                PEDESTRIAN: 255; 192; 203
+                TRAILER: 30; 144; 255
+                TRUCK: 30; 144; 255
+                UNKNOWN: 255; 255; 255
                 Value: false
               Shape:
                 BBox Footprint: false
@@ -4163,6 +4324,16 @@ Visualization Manager:
                 Path Resolution: Normal
                 Predicted Path: true
               Per Class Color:
+                ANIMAL: 255; 105; 180
+                BUS: 30; 144; 255
+                CAR: 30; 144; 255
+                CYCLIST: 119; 11; 32
+                HAZARD: 255; 69; 0
+                MOTORCYCLE: 119; 11; 32
+                PEDESTRIAN: 255; 192; 203
+                TRAILER: 30; 144; 255
+                TRUCK: 30; 144; 255
+                UNKNOWN: 255; 255; 255
                 Value: false
               Shape:
                 BBox Footprint: false
@@ -4207,6 +4378,16 @@ Visualization Manager:
                 Path Resolution: Normal
                 Predicted Path: true
               Per Class Color:
+                ANIMAL: 255; 105; 180
+                BUS: 30; 144; 255
+                CAR: 30; 144; 255
+                CYCLIST: 119; 11; 32
+                HAZARD: 255; 69; 0
+                MOTORCYCLE: 119; 11; 32
+                PEDESTRIAN: 255; 192; 203
+                TRAILER: 30; 144; 255
+                TRUCK: 30; 144; 255
+                UNKNOWN: 255; 255; 255
                 Value: false
               Shape:
                 BBox Footprint: false
@@ -4239,6 +4420,7 @@ Visualization Manager:
                 Twist: false
                 Yaw: false
                 Yaw Rate: false
+              Display Offset: 0
               Enabled: true
               Line Width: 0.15000000596046448
               Name: Prediction(light_blue)
@@ -4250,6 +4432,16 @@ Visualization Manager:
                 Path Resolution: Normal
                 Predicted Path: true
               Per Class Color:
+                ANIMAL: 255; 105; 180
+                BUS: 30; 144; 255
+                CAR: 30; 144; 255
+                CYCLIST: 119; 11; 32
+                HAZARD: 255; 69; 0
+                MOTORCYCLE: 119; 11; 32
+                PEDESTRIAN: 255; 192; 203
+                TRAILER: 30; 144; 255
+                TRUCK: 30; 144; 255
+                UNKNOWN: 255; 255; 255
                 Value: false
               Shape:
                 BBox Footprint: false
@@ -5080,6 +5272,18 @@ Visualization Manager:
         History Policy: Keep Last
         Reliability Policy: Reliable
         Value: /planning/trajectory_selector/trajectory_selector_node/debug/validator/plugin_report_text
+      Value: false
+    - Class: rviz_default_plugins/MarkerArray
+      Enabled: true
+      Name: MarkerArray
+      Namespaces:
+        {}
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /planning/trajectory_generator/trajectory_processor/debug/mppi/markers
       Value: true
   Enabled: true
   Global Options:
@@ -5137,6 +5341,7 @@ Visualization Manager:
       Max velocity: 33.29999923706055
       Min velocity: -33.29999923706055
       Pose Topic: /simulation/dummy_perception_publisher/object_info
+      Predicted: false
       Target Frame: <Fixed Frame>
       Theta std deviation: 0.0872664600610733
       Velocity: 0
@@ -5152,9 +5357,10 @@ Visualization Manager:
       Max velocity: 33.29999923706055
       Min velocity: -33.29999923706055
       Pose Topic: /simulation/dummy_perception_publisher/object_info
+      Predicted: false
       Target Frame: <Fixed Frame>
       Theta std deviation: 0.0872664600610733
-      Velocity: 3
+      Velocity: 0
       W vehicle width: 1.7999999523162842
       X std deviation: 0.029999999329447746
       Y std deviation: 0.029999999329447746
@@ -5168,6 +5374,7 @@ Visualization Manager:
       Max velocity: 33.29999923706055
       Min velocity: -33.29999923706055
       Pose Topic: /simulation/dummy_perception_publisher/object_info
+      Predicted: false
       Target Frame: <Fixed Frame>
       Theta std deviation: 0.0872664600610733
       Velocity: 0
@@ -5190,26 +5397,21 @@ Visualization Manager:
   Value: true
   Views:
     Current:
-      Class: rviz_default_plugins/ThirdPersonFollower
-      Distance: 35.52880859375
+      Angle: -1.5399997234344482
+      Class: tier4_camera_view_rviz_plugin/BirdEyeView
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
-      Focal Point:
-        X: 0
-        Y: 0
-        Z: 0
-      Focal Shape Fixed Size: true
-      Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.20000000298023224
+      Scale: 24.83919906616211
       Target Frame: base_link
-      Value: ThirdPersonFollower (rviz)
-      Yaw: 3.141592025756836
+      Value: BirdEyeView (tier4_camera_view_rviz_plugin)
+      X: 9.738225936889648
+      Y: 3.3127119541168213
     Saved:
       - Class: rviz_default_plugins/ThirdPersonFollower
         Distance: 18
@@ -5256,21 +5458,23 @@ Window Geometry:
   ControlModeDisplay:
     collapsed: false
   Displays:
-    collapsed: true
-  Height: 1565
+    collapsed: false
+  Height: 1536
   Hide Left Dock: false
-  Hide Right Dock: true
+  Hide Right Dock: false
   PointcloudOnCamera:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000400000000000001ee000005bafc0200000010fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005500fffffffb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb00000024004100750074006f00770061007200650053007400610074006500500061006e0065006c0100000042000004c60000006700fffffffb0000002800410063007400690076006500470065006e0065007200610074006f007200500061006e0065006c0100000517000000680000005600fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000c00430061006d0065007200610100000682000000eb0000000000000000fb0000000a0049006d0061006700650100000505000002680000000000000000fb0000002c0049006e0069007400690061006c0050006f007300650042007500740074006f006e00500061006e0065006c000000068f000000de0000000000000000fb0000002c0049006e0069007400690061006c0050006f007300650042007500740074006f006e00500061006e0065006c000000068f000000de0000000000000000fb00000030005200650063006f0067006e006900740069006f006e0052006500730075006c0074004f006e0049006d006100670065000000042f000001800000003100fffffffb0000002a004100750074006f0077006100720065004400610074006500540069006d006500500061006e0065006c0000000332000000720000004900fffffffb000000240050006f0069006e00740063006c006f00750064004f006e00430061006d006500720061000000039d000000560000003100fffffffb000000240043006f006e00740072006f006c004d006f006400650044006900730070006c00610079010000058e0000006e0000005600ffffff00000001000001ab000005c7fc0200000004fb000000100044006900730070006c006100790073000000003b00000201000000d200fffffffc00000242000003c00000000000fffffffaffffffff0100000002fb0000000a0056006900650077007300000005d5000001ab000001d400fffffffb0000001e0054006f006f006c002000500072006f00700065007200740069006500730000000000ffffffff0000009c00fffffffb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000e7a0000005afc0100000001fb0000000a00560069006500770073030000004e00000080000002e1000001970000000300000e7a0000005afc0100000002fb0000000800540069006d0065010000000000000e7a0000000000000000fb0000000800540069006d0065010000000000000450000000000000000000000900000005ba00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000400000000000001ee0000059dfc0200000011fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005500fffffffb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb00000024004100750074006f00770061007200650053007400610074006500500061006e0065006c0100000042000004080000006700fffffffb0000002800410063007400690076006500470065006e0065007200610074006f007200500061006e0065006c0100000459000000580000005600fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000c00430061006d0065007200610100000682000000eb0000000000000000fb0000000a0049006d0061006700650100000505000002680000000000000000fb0000002c0049006e0069007400690061006c0050006f007300650042007500740074006f006e00500061006e0065006c000000068f000000de0000000000000000fb0000002c0049006e0069007400690061006c0050006f007300650042007500740074006f006e00500061006e0065006c000000068f000000de0000000000000000fb00000030005200650063006f0067006e006900740069006f006e0052006500730075006c0074004f006e0049006d006100670065000000042f000001800000003100fffffffb0000002a004100750074006f0077006100720065004400610074006500540069006d006500500061006e0065006c0000000332000000720000004900fffffffb000000240050006f0069006e00740063006c006f00750064004f006e00430061006d006500720061000000039d000000560000003100fffffffb000000240043006f006e00740072006f006c004d006f006400650044006900730070006c0061007901000004c00000005d0000005600fffffffb000000220052006f0075007400650048006900730074006f0072007900500061006e0065006c010000052c000000b3000000b300ffffff00000001000001ab0000059dfc0200000004fb000000100044006900730070006c006100790073010000004200000354000000d200fffffffc000003a50000023a000000c20100001dfa000000010100000002fb0000000a0056006900650077007301000005d5000001ab0000019b00fffffffb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000000ffffffff0000009600fffffffb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000e7a0000005afc0100000001fb0000000a00560069006500770073030000004e00000080000002e1000001970000000300000e7a0000005afc0100000002fb0000000800540069006d0065010000000000000e7a0000000000000000fb0000000800540069006d00650100000000000004500000000000000000000006030000059d00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   RecognitionResultOnImage:
+    collapsed: false
+  RouteHistoryPanel:
     collapsed: false
   Selection:
     collapsed: false
   Tool Properties:
-    collapsed: true
+    collapsed: false
   Views:
-    collapsed: true
-  Width: 2813
-  X: 67
+    collapsed: false
+  Width: 2490
+  X: 70
   Y: 27
